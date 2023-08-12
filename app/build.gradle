@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace 'com.jetpack_compose_api'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.jetpack_compose_api"
         minSdk 24
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -53,9 +53,9 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     /* Jetpack Compose */
-    implementation 'androidx.compose.ui:ui:1.4.3'
+    implementation 'androidx.compose.ui:ui:1.5.0'
     implementation 'androidx.compose.foundation:foundation'
-    implementation 'androidx.compose.material:material:1.4.3'
-    implementation 'androidx.compose.runtime:runtime:1.4.3'
+    implementation 'androidx.compose.material:material:1.5.0'
+    implementation 'androidx.compose.runtime:runtime:1.5.0'
     implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
 }
