@@ -1,5 +1,6 @@
 package com.jetpack_compose_api
 
+import android.content.Context
 import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,12 +17,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,10 +66,11 @@ fun setPhoto()
 @Composable
 fun setProfileData() {
     Row {
-        Image(
+      /*  Image(
             painterResource(id = R.mipmap.ic_photo_foreground),
             contentDescription = "Contact profile picture",
         )
+*/
 
         Column {
             Text(
@@ -143,7 +150,7 @@ fun ProfileScreen() {
                 )
                 .height(boxHeight)
         ) {
-            Image(
+           /* Image(
                 painterResource(id = R.drawable.profile),
                 contentDescription = "profile pic",
                 modifier = Modifier
@@ -151,7 +158,27 @@ fun ProfileScreen() {
                     .size(imageHeight)
                     .align(Alignment.BottomCenter)
                     .clip(CircleShape),
+            )*/
+
+            AsyncImage(
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data("https://media.licdn.com/dms/image/D4D03AQES1_bmBBsnKQ/profile-displayphoto-shrink_800_800/0/1684536820679?e=1698278400&v=beta&t=g_tgwj7XjQATL27C5XS2L7v5TbEUqxUHlxRlNPFEjJU")
+                    .crossfade(true)
+                    .build(),
+               // placeholder = painterResource(R.drawable.user_placeholder),
+                contentDescription = stringResource(R.string.description),
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .offset(y = imageHeight / 2)
+                    .size(imageHeight)
+                    .align(Alignment.BottomCenter)
+                    .clip(CircleShape)
             )
+
+         /*   AsyncImage(
+                model = "https://media.licdn.com/dms/image/D5622AQHrbdOv0D0NcA/feedshare-shrink_800/0/1692473506906?e=1695254400&v=beta&t=VB6CUY4sw_psLct363ywnRGSkWFdeEBaEImA1yxag4s",
+                contentDescription = null,
+            )*/
         }
         Spacer(modifier = Modifier.height(imageHeight / 2))
         Column(
